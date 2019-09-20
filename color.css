@@ -22,6 +22,7 @@ h1{
 #bookInfo{
     table-layout: auto;
     text-align: left;
+    border: 1px solid transparent;
     width: 80%;
     margin-left: 10%;
 }
@@ -31,13 +32,20 @@ h1{
     width: 30%;
 }
 
-#editButton{
-    width: 20%;
-    margin-left: 40%;
+#saveButton{
     cursor: pointer;
-    background-color: #f99f48;
+    background-color: #78bbe6;
     color: white;
 }
-#editButton:hover{
-    background-color: #ff8c00;
+#saveButton:hover{
+    background-color: #1b435d;
+}
+
+.need{
+    width: 10%;
+    color: #f99f48;
+}
+#selectCancelSave{
+    display: flex;
+    margin-left: 30%;
 }
