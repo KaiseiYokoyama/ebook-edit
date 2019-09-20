@@ -30,7 +30,7 @@
     ]
 </script>
 
-<script type="text/javascript" src="edit.js"></script>
+<!-- <script type="text/javascript" src="edit.js"></script> -->
 <script type="text/javascript">
     function getID() {
         const value = window.location.href.match(new RegExp("[?&]id=(.*?)(&|$|#)"));
@@ -42,17 +42,47 @@
             if(data[i].id == id) return data[i];
         }
     }
-    function editRequest(){
-        newData = {"id": getID(),"title": "鼻","tags": ["literature"],"is_bookmark": false,"memo": "メモ"};
-        alert(1)
+    function goIndividualPage(){
+        window.location.href = "./individual.html?id="+getID();
     }
+    function editRequest(){
+        newData = {
+            "id": getID(),
+            "title": document.getElementById("title").value,
+            "tags": document.getElementById("tags").value.split(','),
+            "is_bookmark": bookmark,
+            "memo": document.getElementById("memo").value
+        };
+        alert(newData.id);
+        alert(newData.title);
+        alert(newData.tags);
+        alert(newData.is_bookmark);
+        alert(newData.memo);
+    }
+    function showStar(){
+        var star = document.getElementById("star");
+        if(bookmark){
+            star.innerHTML = "<i class=\"star icon\" onclick=\"reverseBookmark();\"></i>"
+        } else {
+            star.innerHTML = "<i class=\"star outline icon\" onclick=\"reverseBookmark();\"></i>"
+        }
+
+    }
+    function reverseBookmark(){
+        bookmark = !bookmark;
+        showStar();
+    }
+
+    var bookmark;
     window.onload = function(){
         // alert(getID());
         showData = searchShowData(getID());
         // alert(showData.tags);
+        bookmark = showData.is_bookmark;
         document.getElementById("title").innerHTML = showData.title;
         document.getElementById("tags").innerHTML = showData.tags;
         document.getElementById("memo").innerHTML = showData.memo;
+        showStar();
     };
 </script>
 
@@ -60,28 +90,27 @@
     <header>
         <img src="./images/logo.png" alt="logo" id="logo">
     </header>
-    <h1>書籍情報</h1>
-    <table id="bookInfo" class="ui basic table">
-        <tbody id='tableBody'>
-            <tr>
-                <td class="bookInfoIndex">タイトル</td>
-                <td class="need">必須</td>
-                <td><div id="title"></div><div id="star"></div></td>
-            </tr>
-            <tr>
-                <td class="bookInfoIndex">分類</td>
-                <td></td>
-                <td><div id="tags"></div></td>
-            </tr>
-            <tr>
-                <td class="bookInfoIndex">メモ</td>
-                <td></td>
-                <td><div id="memo"></div></td>
-            </tr>
-        </tbody>
-    </table>
+    <h1>書籍情報　<div id="star"></div></h1>
+    <form class="ui form">
+        <table id="bookInfo" class="ui basic table">
+            <tbody id='tableBody'>
+                <tr>
+                    <td class="bookEditIndex">タイトル</td>
+                    <td><textarea id="title" placeholder="Title..." rows="1"></textarea></div>
+                </tr>
+                <tr>
+                    <td class="bookEditIndex">分類</td>
+                    <td><textarea id="tags" placeholder="Tags..." rows="1"></textarea></td>
+                </tr>
+                <tr>
+                    <td class="bookEditIndex">メモ</td>
+                    <td><textarea id="memo" placeholder="Memo..." rows="10"></textarea></td>
+                </tr>
+            </tbody>
+        </table>
+    </form>
     <div id="selectCancelSave">
-        <button class="circular ui button" id="cancelButton" onclick="editRequest();">キャンセルする</button>
+        <button class="circular ui button" id="cancelButton" onclick="goIndividualPage();">キャンセルする</button>
         <button class="circular ui button" id="saveButton" onclick="editRequest();">保存する</button>
     </div>
 

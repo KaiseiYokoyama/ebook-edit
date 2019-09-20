@@ -27,7 +27,17 @@ h1{
     margin-left: 10%;
 }
 
-.bookInfoIndex{
+
+
+
+
+#star{
+    color: #f99f48;
+    display: inline;
+}
+
+.bookEditIndex{
+    vertical-align: top;
     background-color: whitesmoke;
     width: 30%;
 }
@@ -41,10 +51,7 @@ h1{
     background-color: #1b435d;
 }
 
-.need{
-    width: 10%;
-    color: #f99f48;
-}
+
 #selectCancelSave{
     display: flex;
     margin-left: 30%;
