@@ -8,7 +8,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 
 <!-- Site Properties -->
-<title>button</title>
+<title>edit</title>
 <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.3/semantic.min.css">
 <link rel="stylesheet" type="text/css" href="color.css">
 <script src="https://code.jquery.com/jquery-3.3.1.slim.js"></script>
@@ -62,9 +62,9 @@
     function showStar(){
         var star = document.getElementById("star");
         if(bookmark){
-            star.innerHTML = "<i class=\"star icon\" onclick=\"reverseBookmark();\"></i>"
+            star.innerHTML = "<i class=\"star icon\"></i>"
         } else {
-            star.innerHTML = "<i class=\"star outline icon\" onclick=\"reverseBookmark();\"></i>"
+            star.innerHTML = "<i class=\"star outline icon\"></i>"
         }
 
     }
@@ -90,7 +90,7 @@
     <header>
         <img src="./images/logo.png" alt="logo" id="logo">
     </header>
-    <h1>書籍情報　<div id="star"></div></h1>
+    <h1><div id="pageName">書籍情報編集</div><button class="circular ui button" id="starButton" onclick="reverseBookmark();"><div id="star"></div></button></h1>
     <form class="ui form">
         <table id="bookInfo" class="ui basic table">
             <tbody id='tableBody'>
@@ -110,8 +110,8 @@
         </table>
     </form>
     <div id="selectCancelSave">
-        <button class="circular ui button" id="cancelButton" onclick="goIndividualPage();">キャンセルする</button>
-        <button class="circular ui button" id="saveButton" onclick="editRequest();">保存する</button>
+        <button class="circular ui button" id="cancelButton" onclick="goIndividualPage();">戻る</button>
+        <button class="circular ui button" id="saveButton" onclick="editRequest();">更新する</button>
     </div>
 
 </body>
