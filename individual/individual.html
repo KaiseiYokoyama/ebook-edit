@@ -8,7 +8,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 
 <!-- Site Properties -->
-<title>edit</title>
+<title>individual</title>
 <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.3/semantic.min.css">
 <link rel="stylesheet" type="text/css" href="color.css">
 <script src="https://code.jquery.com/jquery-3.3.1.slim.js"></script>
@@ -30,34 +30,32 @@
     ]
 </script>
 
-<script type="text/javascript" src="edit.js"></script>
+<script type="text/javascript" src="individual.js"></script>
 
 <body>
     <header>
-        <img src="./images/logo.png" alt="logo" id="logo">
+        <img src="../images/logo.png" alt="logo" id="logo">
     </header>
-    <h1><div id="pageName">書籍情報編集</div><button class="circular ui button" id="starButton" onclick="reverseBookmark();"><div id="star"></div></button></h1>
-    <form class="ui form">
-        <table id="bookInfo" class="ui basic table">
-            <tbody id='tableBody'>
-                <tr>
-                    <td class="bookEditIndex">タイトル</td>
-                    <td><textarea id="title" placeholder="Title..." rows="1"></textarea></div>
-                </tr>
-                <tr>
-                    <td class="bookEditIndex">タグ</td>
-                    <td><textarea id="tags" placeholder="Tags..." rows="1"></textarea></td>
-                </tr>
-                <tr>
-                    <td class="bookEditIndex">メモ</td>
-                    <td><textarea id="memo" placeholder="Memo..." rows="10"></textarea></td>
-                </tr>
-            </tbody>
-        </table>
-    </form>
+    <h1><div id="pageName">書籍情報</div><button class="circular ui button" id="starButton"><div id="star"></div></button></h1>
+    <table id="bookInfo" class="ui celled table">
+        <tbody id='tableBody'>
+            <tr>
+                <td class="bookInfoIndex">タイトル</td>
+                <td><div id="title"></div><div id="star"></div></td>
+            </tr>
+            <tr>
+                <td class="bookInfoIndex">タグ</td>
+                <td><div class="tags" id="tags"></div></td>
+            </tr>
+            <tr>
+                <td class="bookInfoIndex">メモ</td>
+                <td><div id="memo"></div></td>
+            </tr>
+        </tbody>
+    </table>
     <div id="selectButtons">
-        <button class="ui labeled icon big button" id="cancelButton" onclick="goIndividualPage();"><i class="backward icon"></i>戻る</button>
-        <button class="ui labeled icon big button" id="saveButton" onclick="editRequest();"><i class="upload icon"></i>更新する</button>
+        <button class="ui labeled icon big button" id="cancelButton" onclick="goIndexPage();"><i class="backward icon"></i>戻る</button>
+        <button class="ui labeled icon big button" id="editButton" onclick="goEditPage();"><i class="edit icon"></i>編集する</button>
     </div>
 
 </body>

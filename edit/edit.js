@@ -9,7 +9,7 @@ function searchShowData(id){
     }
 }
 function goIndividualPage(){
-    window.location.href = "./individual.html?id="+getID();
+    window.location.href = "../individual/individual.html?id="+getID();
 }
 function editRequest(){
     newData = {
