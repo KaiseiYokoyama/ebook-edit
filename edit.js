@@ -8,14 +8,44 @@ function searchShowData(id){
         if(data[i].id == id) return data[i];
     }
 }
-function goEditPage(){
-    window.location.href = "./edit.html?id="+getID();
+function goIndividualPage(){
+    window.location.href = "./individual.html?id="+getID();
 }
+function editRequest(){
+    newData = {
+        "id": getID(),
+        "title": document.getElementById("title").value,
+        "tags": document.getElementById("tags").value.split(','),
+        "is_bookmark": bookmark,
+        "memo": document.getElementById("memo").value
+    };
+    alert(newData.id);
+    alert(newData.title);
+    alert(newData.tags);
+    alert(newData.is_bookmark);
+    alert(newData.memo);
+}
+function showStar(){
+    var star = document.getElementById("star");
+    if(bookmark){
+        star.innerHTML = "<i class=\"star icon\"></i>"
+    } else {
+        star.innerHTML = "<i class=\"star outline icon\"></i>"
+    }
+}
+function reverseBookmark(){
+    bookmark = !bookmark;
+    showStar();
+}
+
+var bookmark;
 window.onload = function(){
     // alert(getID());
     showData = searchShowData(getID());
     // alert(showData.tags);
+    bookmark = showData.is_bookmark;
     document.getElementById("title").innerHTML = showData.title;
     document.getElementById("tags").innerHTML = showData.tags;
     document.getElementById("memo").innerHTML = showData.memo;
+    showStar();
 };
